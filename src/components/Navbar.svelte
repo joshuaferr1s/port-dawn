@@ -11,7 +11,6 @@
   </div>
   <div class="flex items-center justify-end">
     <button
-      href="#"
       on:click={() => netlifyIdentity.open()}
       class="whitespace-no-wrap inline-flex items-center justify-center px-4
       py-2 border border-transparent text-base leading-6 font-medium
