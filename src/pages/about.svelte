@@ -5,5 +5,5 @@
   metatags.description = 'About page for the wiki for the Port Dawn d&d 5e campaign';
 </script>
 
-<a href={$url('/home')}>About</a>
+<a href={$url('/dhfgd')}>404</a>
 <h1>About</h1>
