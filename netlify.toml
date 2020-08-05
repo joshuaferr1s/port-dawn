@@ -1,0 +1,11 @@
+[dev]
+  command = 'yarn dev'
+
+[build]
+  command = 'yarn && yarn build'
+  publish = 'public/'
+
+[[redirects]]
+  from = '/*'
+  to = '/'
+  status = 200
