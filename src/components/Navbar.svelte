@@ -1,23 +1,34 @@
 <script>
+  import { goto } from '@sveltech/routify';
   import netlifyIdentity from 'netlify-identity-widget';
-	
-	netlifyIdentity.init();
+  import { user } from '../store';
+  import AuthButton from './AuthButton.svelte';
+  
+  function logout() {
+    user.set(null);
+    $goto('/');
+  }
+  netlifyIdentity.on('init', newUser => {
+    user.set(newUser)
+  });
+  netlifyIdentity.on('login', newUser => user.set(newUser));
+  netlifyIdentity.on('logout', logout);
+  netlifyIdentity.init();
 </script>
 
-<div
-  class="flex justify-between items-center p-4 border-b-2 border-gray-100 bg-white">
+<header class="flex justify-between items-center px-4 py-2 border-b-2 border-gray-100">
   <div class="text-xl">
-    <a href="/">Port<span class="text-gray-600">Dawn</span></a>
+    <a href="/">Port<span class="text-orange-400">Dawn</span></a>
   </div>
-  <div class="flex items-center justify-end">
-    <button
-      on:click={() => netlifyIdentity.open()}
-      class="whitespace-no-wrap inline-flex items-center justify-center px-4
-      py-2 border border-transparent text-base leading-6 font-medium
-      rounded-md text-white bg-indigo-600 hover:bg-indigo-500
-      focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo
-      active:bg-indigo-700 transition ease-in-out duration-150">
-      Sign in
-    </button>
+  <div class="">
+    {#if $user}
+      <AuthButton on:click={() => netlifyIdentity.logout()} color="red">
+        Split the party
+      </AuthButton>
+    {:else}
+      <AuthButton on:click={() => netlifyIdentity.open()} color="indigo">
+        Join the party
+      </AuthButton>
+    {/if}
   </div>
-</div>
+</header>

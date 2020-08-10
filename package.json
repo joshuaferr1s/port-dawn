@@ -23,6 +23,8 @@
     "tailwindcss": "^1.6.2"
   },
   "dependencies": {
+    "faunadb": "^2.14.2",
+    "marked": "^1.1.1",
     "netlify-identity-widget": "^1.9.1",
     "sirv-cli": "^1.0.0"
   }

@@ -5,9 +5,7 @@
   metatags.description = '404 - Page not found';
 </script>
 
-<div class="flex h-full justify-center items-center text-center">
-  <div>
-    <h1 class="text-3xl">404 - Page Not Found</h1>
-    <p class="text-lg">Return <a href={$url('/')}>home</a></p>
-  </div>
+<div class="mt-10 text-center w-11/12 md:w-1/2 mx-auto">
+  <h1 class="text-3xl">404 - Page Not Found</h1>
+  <a class="text-lg hover:text-orange-400" href={$url('/')}>Back to the inn</a>
 </div>

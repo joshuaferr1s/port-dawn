@@ -6,11 +6,12 @@
 
 # TODO List
 
-* [] Central store
+* [] Invest in Faunadb
+* [x] Central user store
 * [] Authentication
-  * [] Able to login
+  * [x] Able to login
   * [] When logged in CRUD available
-  * [] Log in/Log out button switched on state
+  * [x] Log in/Log out button switched on state
 * [] Home page
   * [] Hero section
   * [] List all categories
