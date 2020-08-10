@@ -6,6 +6,7 @@
   import ActionBar from './ActionBar.svelte';
   import Button from '../Button.svelte';
   import Markdown from '../Markdown.svelte';
+  import Card from '../Card.svelte';
 
   export let backText;
   export let backTo;
@@ -21,17 +22,7 @@
 <div class="mt-10 flex flex-row flex-wrap w-11/12 mx-auto">
   <ActionBar {backTo} {backText} />
   <div class="w-full sm:w-1/3 md:w-1/4 px-2">
-    <div class="flex rounded shadow-lg p-2">
-      <div class="w-1/3 pr-2">
-        <img class="w-full rounded-sm" src={entity.image} alt={entity.name}>
-      </div>
-      <div class="w-2/3 flex flex-col justify-around">
-        <div>
-          <h1 class="text-gray-700 font-bold text-xl">{entity.name}</h1>
-          <p class="mt-2 text-gray-600 text-sm">{entity.tagline}</p>
-        </div>
-      </div>
-    </div>
+    <Card title={entity.name} tagline={entity.tagline} image={entity.image} />
     <Button on:click={() => dispatch('edit')} color="blue" mt={true}>
       Edit
     </Button>

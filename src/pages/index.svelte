@@ -16,7 +16,7 @@
 
 {#if $user}
   <div class="mt-10 w-11/12 mx-auto">
-    <h1 class="text-center uppercase text-orange-600 text-2xl font-hairline">Welcome to Krusty's{$user.user_metadata.full_name ? `, ${$user.user_metadata.full_name}!` : '!'}</h1>
+    <h1 class="w-full my-10 text-center text-3xl text-orange-500">Welcome to Krusty's{$user.user_metadata.full_name ? `, ${$user.user_metadata.full_name}!` : '!'}</h1>
     <div class="flex flex-row flex-wrap mt-2">
       {#each categories as category}
         <div class="w-full sm:w-1/3 md:w-1/4 p-2">

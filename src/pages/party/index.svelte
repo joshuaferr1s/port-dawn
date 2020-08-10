@@ -26,20 +26,22 @@
     <Button on:click={() => $goto(`/party/create`)} color="green">Create</Button>
     <Button on:click={getData} color="indigo">Short Rest</Button>
   </ActionBar>
+
+  <h1 class="w-full my-10 text-center text-3xl text-orange-500">Party Members</h1>
+
+  {#if $party.length > 0}
+    <CardList>
+      {#each $party as partyMember}
+        <Card id={partyMember.id} title={partyMember.data.name} tagline={partyMember.data.tagline} image={partyMember.data.image} />
+      {/each}
+    </CardList>
+  {:else if $dataLoading}
+    <div class="flex justify-center mt-10">
+      <Spinner />
+    </div>
+  {:else if !$dataLoading}
+    <p class="w-11/12 mx-auto text-center text-gray-600">Blast! There are no party members to be seen.</p>
+  {/if}
 </div>
 
-<h1 class="w-full my-10 text-center text-3xl text-orange-500">Party Members</h1>
 
-{#if $party.length > 0}
-  <CardList>
-    {#each $party as partyMember}
-      <Card id={partyMember.id} title={partyMember.data.name} tagline={partyMember.data.tagline} image={partyMember.data.image} />
-    {/each}
-  </CardList>
-{:else if $dataLoading}
-  <div class="flex justify-center mt-10">
-    <Spinner />
-  </div>
-{:else if !$dataLoading}
-  <p class="w-11/12 mx-auto text-center text-gray-600">Blast! There are no party members to be seen.</p>
-{/if}
