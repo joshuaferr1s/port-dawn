@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <Button on:click={() => dispatch('edit')} color="blue">
+    <Button on:click={() => dispatch('edit')} color="blue" mt={true}>
       Edit
     </Button>
     {#if isAdmin}
