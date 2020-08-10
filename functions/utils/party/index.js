@@ -1,12 +1,12 @@
 const faunadb = require('faunadb');
 
 const q = faunadb.query
-const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SECRET,
-});
 
 exports.getAllPartyMembers = async () => {
   try {
+    const client = new faunadb.Client({
+      secret: process.env.FAUNADB_SECRET,
+    });
     const response = await client.query(q.Map(
       q.Paginate(q.Match(q.Ref("indexes/all_party"))),
       q.Lambda(x => q.Get(x))
@@ -30,6 +30,9 @@ exports.getAllPartyMembers = async () => {
 
 exports.getAPartyMember = async (id) => {
   try {
+    const client = new faunadb.Client({
+      secret: process.env.FAUNADB_SECRET,
+    });
     const response = await client.query(q.Get(q.Ref(q.Collection('party'), id)));
     return {
       statusCode: 200,
@@ -49,6 +52,9 @@ exports.getAPartyMember = async (id) => {
 
 exports.createAPartyMember = async (data) => {
   try {
+    const client = new faunadb.Client({
+      secret: process.env.FAUNADB_SECRET,
+    });
     const response = await client.query(
       q.Create(q.Collection('party'), { data })
     );
@@ -70,6 +76,9 @@ exports.createAPartyMember = async (data) => {
 
 exports.updateAPartyMember = async (data) => {
   try {
+    const client = new faunadb.Client({
+      secret: process.env.FAUNADB_SECRET,
+    });
     const id = data.id;
     delete data.id;
     const response = await client.query(
@@ -93,6 +102,9 @@ exports.updateAPartyMember = async (data) => {
 
 exports.deleteAPartyMember = async (id) => {
   try {
+    const client = new faunadb.Client({
+      secret: process.env.FAUNADB_SECRET,
+    });
     const response = await client.query(
       q.Delete(q.Ref(q.Collection('party'), id))
     )
