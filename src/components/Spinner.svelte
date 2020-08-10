@@ -1,13 +1,8 @@
-<script>
-  export let size = 64;
-  export let color = '#3498db';
-</script>
-
-<div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-{size} w-{size}" style="--color:{color}"></div>
+<div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
 
 <style>
   .loader {
-    border-top-color: var(--color);
+    border-top-color: #3498db;
     -webkit-animation: spinner 1.5s linear infinite;
     animation: spinner 1.5s linear infinite;
   }

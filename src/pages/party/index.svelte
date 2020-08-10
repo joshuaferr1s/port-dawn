@@ -38,7 +38,7 @@
   </CardList>
 {:else if $dataLoading}
   <div class="flex justify-center mt-10">
-    <Spinner size={32} />
+    <Spinner />
   </div>
 {:else if !$dataLoading}
   <p class="w-11/12 mx-auto text-center text-gray-600">Blast! There are no party members to be seen.</p>

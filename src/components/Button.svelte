@@ -5,7 +5,8 @@
 
 <button
   on:click
-  class="{mt ? 'mt-2' : ''} block w-full {`bg-${color}-500 hover:bg-${color}-700`}
-  text-white font-bold py-2 px-4 rounded">
+  class="{mt ? 'mt-2' : ''} block w-full {color === 'indigo' ? 'bg-indigo-500 hover:bg-indigo-700' : ''}
+  {color === 'red' ? 'bg-red-500 hover:bg-red-700' : ''} {color === 'green' ? 'bg-green-500 hover:bg-green-700' : ''}
+  {color === 'blue' ? 'bg-blue-500 hover:bg-blue-700' : ''} text-white font-bold py-2 px-4 rounded">
   <slot />
 </button>
