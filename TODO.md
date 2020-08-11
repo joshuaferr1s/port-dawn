@@ -1,21 +1,42 @@
-# Useful Links
-
-- https://dev.to/karkranikhil/build-markdown-editor-using-svelte-in-10-minutes-1c69
-- https://github.com/markedjs/marked
-- https://marked.js.org/demo/
-
 # TODO List
 
-* [] Invest in Faunadb
-* [x] Central user store
-* [] Authentication
-  * [x] Able to login
-  * [] When logged in CRUD available
-  * [x] Log in/Log out button switched on state
-* [] Home page
-  * [] Hero section
-  * [] List all categories
-  * [] Quick access topics
-* [] Each category page and their detail pages
-  * [] Paginate results (maybe with infinite scroll)
-  * [] Seach bar (searches db rather than displayed results)
+* [x] Make a faunadb account
+* [*] Setup Netlify
+  * [x] Identity
+  * [x] Function
+  * [x] Automatic deployments
+* [x] User based access
+  * [x] User can login
+  * [x] User can logout
+* [x] Party Members
+  * [x] Can see all party members
+  * [x] Can see a single party member
+  * [x] Can edit a party member
+  * [x] Can delete a party member if an admin
+* [] Krusty's Inn
+  * [x] List all categories
+  * [] Display message from Krusty when logged out
+* [] Notification System
+  * [] Central notification store
+  * [] Displays beneath the navbar
+  * [] Clearable
+* [] People
+  * [] Can see all people
+  * [] Can see a single person
+  * [] Can edit a person
+  * [] Can delete a person if an admin
+* [] Sessions
+  * [] Can see all sessions
+  * [] Can see a single session
+  * [] Can edit a session
+  * [] Can delete a session if an admin
+* [] Locations
+  * [] Can see all locations
+  * [] Can see a single location
+  * [] Can edit a location
+  * [] Can delete a location if an admin
+* [] Items
+  * [] Can see all items
+  * [] Can see a single item
+  * [] Can edit an item
+  * [] Can delete an item if an admin
