@@ -13,9 +13,9 @@
   * [x] Can see a single party member
   * [x] Can edit a party member
   * [x] Can delete a party member if an admin
-* [] Krusty's Inn
+* [x] Krusty's Inn
   * [x] List all categories
-  * [] Display message from Krusty when logged out
+  * [x] Display message from Krusty when logged out
 * [] Notification System
   * [] Central notification store
   * [] Displays beneath the navbar
