@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { metatags, goto } from '@sveltech/routify';
-  import { party, dataLoading, notifications } from '../../store';
+  import { party, dataLoading, notifications, processing } from '../../store';
   import { getPartyMembers } from '../../api';
 
   import ActionBar from '../../components/wrappers/ActionBar.svelte';
@@ -11,11 +11,14 @@
   import Spinner from '../../components/Spinner.svelte';
 
   async function getData() {
-    dataLoading.set(true);
+    processing.set(true);
     const partyMembers = await getPartyMembers();
-    if (partyMembers.success) party.set(partyMembers.data);
+    if (partyMembers.success) {
+      party.set(partyMembers.data);
+      notifications.success('Got the latest party.');
+    }
     else notifications.error('Error fetching the party members. Try again soon.');
-    dataLoading.set(false);
+    processing.set(false);
   }
 
   metatags.title = 'Party Members | Port Dawn';

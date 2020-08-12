@@ -1,8 +1,10 @@
 <script>
   import { metatags, goto } from '@sveltech/routify';
   import marked from 'marked';
-  import { dataLoading, party, notifications } from '../../../store';
+  import { dataLoading, party, notifications, processing } from '../../../store';
   import { updatePartyMember } from '../../../api';
+  import ActionBar from '../../../components/wrappers/ActionBar.svelte';
+  import Button from '../../../components/Button.svelte';
   import Markdown from '../../../components/Markdown.svelte';
 
   export let id;
@@ -29,6 +31,7 @@
   }
 
   async function saveMember() {
+    processing.set(true);
     let memberUpdate = {
       id,
     };
@@ -36,8 +39,13 @@
     if (partyMember.data.tagline !== tagline) memberUpdate.tagline = tagline;
     if (partyMember.data.image !== image) memberUpdate.image = image;
     if (partyMember.data.content !== content) memberUpdate.content = content;
-    if (Object.keys(memberUpdate).length <= 1) return;
+    if (Object.keys(memberUpdate).length <= 1) {
+      notifications.error('No changes found.');
+      processing.set(false);
+      return;
+    }
     const updatedMember = await updatePartyMember(memberUpdate);
+    console.log(updatedMember);
     if (updatedMember.success) {
       party.update(p => p.map(el => {
         if (el.id !== id) return el;
@@ -56,6 +64,7 @@
       notifications.error('Error during saving.');
       console.log(updatedMember);
     }
+    processing.set(false);
   }
 
   $: {
@@ -67,15 +76,11 @@
 
 {#if !$dataLoading && partyMember}
   <div class="mt-10 w-11/12 mx-auto">
-    <div class="w-full flex justify-between px-2 mb-4">
-      <button on:click={() => $goto(`/party/${id}`)} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded inline-flex items-center">
-        <svg class="fill-current w-4 h-4 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
-        <span>Back to {partyMember.data.name}</span>
-      </button>
-      <button on:click={saveMember} class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+    <ActionBar backTo="/party" backText="party members">
+      <Button on:click={saveMember} disabled={$processing} color="green">
         Save
-      </button>
-    </div>
+      </Button>
+    </ActionBar>
     <div class="w-full">
       <div class="sm:flex sm:items-center mb-6">
         <div class="sm:w-1/4">

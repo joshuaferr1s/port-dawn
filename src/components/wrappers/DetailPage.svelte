@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import { goto } from '@sveltech/routify';
-  import { user } from '../../store';
+  import { user, processing } from '../../store';
   import marked from 'marked';
   import ActionBar from './ActionBar.svelte';
   import Button from '../Button.svelte';
@@ -23,11 +23,11 @@
   <ActionBar {backTo} {backText} />
   <div class="w-full sm:w-1/3 md:w-1/4 px-2">
     <Card title={entity.name} tagline={entity.tagline} image={entity.image} />
-    <Button on:click={() => dispatch('edit')} color="blue" mt={true}>
+    <Button on:click={() => dispatch('edit')} disabled={$processing} color="blue" mt={true}>
       Edit
     </Button>
     {#if isAdmin}
-      <Button on:click={() => dispatch('delete')} color="red" mt={true}>
+      <Button on:click={() => dispatch('delete')} disabled={$processing} color="red" mt={true}>
         Delete
       </Button>
     {/if}

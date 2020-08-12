@@ -6,6 +6,8 @@ export const party = writable([]);
 
 export const dataLoading = writable(true);
 
+export const processing = writable(false);
+
 function createNotifications() {
   const { subscribe, set, update } = writable({
     visible: false,

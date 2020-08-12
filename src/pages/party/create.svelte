@@ -1,7 +1,7 @@
 <script>
   import { metatags, goto } from "@sveltech/routify";
   import marked from "marked";
-  import { party, notifications } from "../../store";
+  import { party, notifications, processing } from "../../store";
   import { createPartyMember } from "../../api";
   import ActionBar from '../../components/wrappers/ActionBar.svelte';
   import Button from '../../components/Button.svelte';
@@ -19,6 +19,7 @@
       notifications.error('All fields must have a value.')
       return;
     }
+    processing.set(true);
     const createdMember = await createPartyMember({
       name,
       tagline,
@@ -33,6 +34,7 @@
       notifications.error(`Error saving party member. ${createdMember.data}`);
       console.log(createdMember);
     }
+    processing.set(false);
   }
 
   metatags.title = `Create a party member | Port Dawn`;
@@ -40,7 +42,7 @@
 
 <div class="mt-10 w-11/12 mx-auto">
   <ActionBar backTo="/party" backText="party members">
-    <Button on:click={createMember} color="green">
+    <Button on:click={createMember} disabled={$processing} color="green">
       Create
     </Button>
   </ActionBar>

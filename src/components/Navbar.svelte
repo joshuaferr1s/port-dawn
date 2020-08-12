@@ -9,9 +9,12 @@
     $goto('/');
   }
   netlifyIdentity.on('init', newUser => {
-    user.set(newUser)
+    user.set(newUser);
   });
-  netlifyIdentity.on('login', newUser => user.set(newUser));
+  netlifyIdentity.on('login', newUser => {
+    user.set(newUser);
+    netlifyIdentity.close();
+  });
   netlifyIdentity.on('logout', logout);
   netlifyIdentity.init();
 </script>
