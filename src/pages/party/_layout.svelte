@@ -1,13 +1,13 @@
 <script>
   import { onMount } from 'svelte';
   import { party, dataLoading, notifications } from '../../store';
-  import { getPartyMembers } from '../../api';
+  import { getAll } from '../../api';
 
   let promise;
 
   async function fetchMembers() {
     if ($party.length === 0 && $dataLoading) {
-      const partyMembers = await getPartyMembers();
+      const partyMembers = await getAll('party');
       if (partyMembers.success) party.set(partyMembers.data);
       else notifications.error('Error fetching party members. Try again soon.')
       dataLoading.set(false);
