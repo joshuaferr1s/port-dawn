@@ -20,7 +20,7 @@
   * [x] Central notification store
   * [x] Displays beneath the navbar
   * [x] Clearable
-* [] Lock save, edit, delete buttons whilst processing action
+* [x] Lock save, edit, delete buttons whilst processing action
 * [] Notification d20
 * [] People
   * [] Can see all people
