@@ -16,10 +16,12 @@
 * [x] Krusty's Inn
   * [x] List all categories
   * [x] Display message from Krusty when logged out
-* [] Notification System
-  * [] Central notification store
-  * [] Displays beneath the navbar
-  * [] Clearable
+* [x] Notification System
+  * [x] Central notification store
+  * [x] Displays beneath the navbar
+  * [x] Clearable
+* [] Lock save, edit, delete buttons whilst processing action
+* [] Notification d20
 * [] People
   * [] Can see all people
   * [] Can see a single person

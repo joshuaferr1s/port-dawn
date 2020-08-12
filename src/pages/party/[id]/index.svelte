@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { goto, metatags } from '@sveltech/routify';
-  import { party } from '../../../store';
+  import { party, notifications } from '../../../store';
   import { getPartyMember, deletePartyMember } from '../../../api';
   import DetailPage from '../../../components/wrappers/DetailPage.svelte';
 
@@ -29,9 +29,10 @@
     const deletedMember = await deletePartyMember(id);
     if (deletedMember.success) {
       party.update(p => p.filter(el => el.id !== id));
+      notifications.success(`Successfull deleted: "${deletedMember.data.data.name}"`);
       $goto('/party');
     } else {
-      // TODO: Show error
+      notifications.error(`Error during deletion of "${deletedMember.data.data.name}"`);
       console.log(deleteMember);
     }
   }

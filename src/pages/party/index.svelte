@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { metatags, goto } from '@sveltech/routify';
-  import { party, dataLoading } from '../../store';
+  import { party, dataLoading, notifications } from '../../store';
   import { getPartyMembers } from '../../api';
 
   import ActionBar from '../../components/wrappers/ActionBar.svelte';
@@ -14,6 +14,7 @@
     dataLoading.set(true);
     const partyMembers = await getPartyMembers();
     if (partyMembers.success) party.set(partyMembers.data);
+    else notifications.error('Error fetching the party members. Try again soon.');
     dataLoading.set(false);
   }
 

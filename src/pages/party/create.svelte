@@ -1,7 +1,7 @@
 <script>
   import { metatags, goto } from "@sveltech/routify";
   import marked from "marked";
-  import { party } from "../../store";
+  import { party, notifications } from "../../store";
   import { createPartyMember } from "../../api";
   import ActionBar from '../../components/wrappers/ActionBar.svelte';
   import Button from '../../components/Button.svelte';
@@ -15,8 +15,10 @@
   $: markdown = marked(content);
 
   async function createMember() {
-    // TODO: Show error;
-    if (!name || !tagline || !image || !content) return;
+    if (!name || !tagline || !image || !content) {
+      notifications.error('All fields must have a value.')
+      return;
+    }
     const createdMember = await createPartyMember({
       name,
       tagline,
@@ -25,9 +27,10 @@
     });
     if (createdMember.success) {
       party.update((p) => [ ...p, createdMember.data]);
+      notifications.success(`Successfully created ${name}`);
       $goto(`/party/${createdMember.data.id}`);
     } else {
-      // TODO: Show error;
+      notifications.error(`Error saving party member. ${createdMember.data}`);
       console.log(createdMember);
     }
   }

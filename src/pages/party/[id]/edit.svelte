@@ -1,7 +1,7 @@
 <script>
   import { metatags, goto } from '@sveltech/routify';
   import marked from 'marked';
-  import { dataLoading, party } from '../../../store';
+  import { dataLoading, party, notifications } from '../../../store';
   import { updatePartyMember } from '../../../api';
   import Markdown from '../../../components/Markdown.svelte';
 
@@ -51,9 +51,9 @@
           },
         };
       }));
-      $goto(`/party/${id}`);
+      notifications.success('Successfully saved.');
     } else {
-      // TODO: Show error
+      notifications.error('Error during saving.');
       console.log(updatedMember);
     }
   }
