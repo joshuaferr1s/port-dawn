@@ -9,6 +9,7 @@
     $goto('/');
   }
   netlifyIdentity.on('login', newUser => {
+    console.log(newUser);
     user.set(newUser);
     netlifyIdentity.close();
   });
