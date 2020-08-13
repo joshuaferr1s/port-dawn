@@ -13,7 +13,7 @@
   export let entity;
 
   const dispatch = createEventDispatcher();
-  const isAdmin = $user.app_metadata.roles.includes('admin');
+  const isAdmin = $user && $user.app_metadata && $user.app_metadata.roles.includes('admin');
 
   $: markdown = entity ? marked(entity.content) : '';
 </script>
