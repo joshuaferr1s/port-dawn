@@ -8,9 +8,6 @@
     user.set(null);
     $goto('/');
   }
-  netlifyIdentity.on('init', newUser => {
-    user.set(newUser);
-  });
   netlifyIdentity.on('login', newUser => {
     user.set(newUser);
     netlifyIdentity.close();
