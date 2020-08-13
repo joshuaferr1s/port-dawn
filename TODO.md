@@ -21,7 +21,7 @@
   * [x] Displays beneath the navbar
   * [x] Clearable
 * [x] Lock save, edit, delete buttons whilst processing action
-* [] Notification d20
+* [x] Notification d20
 * [] People
   * [] Can see all people
   * [] Can see a single person
