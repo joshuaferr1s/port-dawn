@@ -4,24 +4,27 @@
   import { notifications, processing } from '../../store.js';
   import { getSingle, deleteEntity } from '../../api';
   import DetailPage from '../wrappers/DetailPage.svelte';
+  import Button from '../Button.svelte';
 
   export let dbName;
   export let entityList;
   export let id;
   export let backText;
 
-  let currentEntity,
-    promise;
+  let currentEntity;
   
   async function getEntity() {
+    processing.set(true);
     const fetchedEntity = await getSingle(dbName, id);
     if (fetchedEntity.success) {
-      currentEntities = fetchedEntity.data.data;
+      currentEntity = fetchedEntity.data.data;
       metatags.title = `${currentEntity.name} | Port Dawn`;
       metatags.description = currentEntity.tagline;
     } else {
+      notifications.error('That cavern was still empty. You decide to continue on the path.');
       $goto('/404');
     }
+    processing.set(false);
   };
 
   async function _deleteEntity() {
@@ -38,22 +41,22 @@
     processing.set(false);
   };
 
-  onMount(async () => {
-    if ($entityList) {
-      let res = $entityList.find(el => el.id === id);
-      if (res) {
-        currentEntity = res.data;
-        metatags.title = `${currentEntity.name} | Port Dawn`;
-        metatags.description = currentEntity.tagline;
-        return;
-      }
+  onMount(() => {
+    let res = $entityList.find(el => el.id === id);
+    if (!res) {
+      notifications.error(`This cavern appears to be empty. The ${backText} must have escaped.`);
+      return;
     }
-    promise = await getEntity();
+    currentEntity = res.data;
+    metatags.title = `${currentEntity.name} | Port Dawn`;
+    metatags.description = currentEntity.tagline;
   });
 </script>
 
-{#await promise then _}
-  {#if currentEntity}
-    <DetailPage on:edit={() => $goto(`/${dbName}/${id}/edit`)} on:delete={_deleteEntity} backText={backText} backTo={`/${dbName}`} entity={currentEntity} />
-  {/if}
-{/await}
+{#if currentEntity}
+  <DetailPage on:edit={() => $goto(`/${dbName}/${id}/edit`)} on:delete={_deleteEntity} backText={backText} backTo={`/${dbName}`} entity={currentEntity} />
+{:else}
+  <div class="w-1/2 mx-auto">
+    <Button on:click={getEntity} color="green" disabled={$processing}>Call out!</Button>
+  </div>
+{/if}

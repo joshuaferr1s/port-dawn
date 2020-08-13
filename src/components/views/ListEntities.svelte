@@ -7,7 +7,6 @@
   import ActionBar from '../wrappers/ActionBar.svelte';
   import Button from '../Button.svelte';
   import Card from '../Card.svelte';
-  import Spinner from '../Spinner.svelte';
 
   export let dbName;
   export let entityList;
@@ -43,11 +42,7 @@
         <Card id={entity.id} title={entity.data.name} tagline={entity.data.tagline} image={entity.data.image} />
       {/each}
     </div>
-  {:else if $dataLoading}
-    <div class="flex justify-center mt-10">
-      <Spinner />
-    </div>
-  {:else if !$dataLoading}
+  {:else}
     <p class="w-11/12 mx-auto text-center text-gray-600">Blast! There are no {pageTitle} to be seen.</p>
   {/if}
 </div>
