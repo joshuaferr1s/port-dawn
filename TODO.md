@@ -37,8 +37,8 @@
   * [x] Can see a single location
   * [x] Can edit a location
   * [x] Can delete a location if an admin
-* [] Items
-  * [] Can see all items
-  * [] Can see a single item
-  * [] Can edit an item
-  * [] Can delete an item if an admin
+* [x] Items
+  * [x] Can see all items
+  * [x] Can see a single item
+  * [x] Can edit an item
+  * [x] Can delete an item if an admin

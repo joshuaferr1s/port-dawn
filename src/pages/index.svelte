@@ -18,6 +18,11 @@
       tagline: 'The campaign session notes',
       path: '/sessions',
     },
+    {
+      name: 'Items',
+      tagline: 'The items of Port Dawn',
+      path: '/items',
+    },
   ];
 
   metatags.title = 'Port Dawn';
