@@ -32,11 +32,11 @@
   * [x] Can see a single session
   * [x] Can edit a session
   * [x] Can delete a session if an admin
-* [] Locations
-  * [] Can see all locations
-  * [] Can see a single location
-  * [] Can edit a location
-  * [] Can delete a location if an admin
+* [x] Locations
+  * [x] Can see all locations
+  * [x] Can see a single location
+  * [x] Can edit a location
+  * [x] Can delete a location if an admin
 * [] Items
   * [] Can see all items
   * [] Can see a single item
