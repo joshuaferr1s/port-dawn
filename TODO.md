@@ -42,3 +42,8 @@
   * [x] Can see a single item
   * [x] Can edit an item
   * [x] Can delete an item if an admin
+* [x] History
+  * [x] Can see all history
+  * [x] Can see a single history
+  * [x] Can edit an history
+  * [x] Can delete an history if an admin

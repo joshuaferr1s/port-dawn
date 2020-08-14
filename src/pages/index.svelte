@@ -14,14 +14,19 @@
       path: '/people',
     },
     {
+      name: 'Items',
+      tagline: 'The items of Port Dawn',
+      path: '/items',
+    },
+    {
       name: 'Sessions',
       tagline: 'The campaign session notes',
       path: '/sessions',
     },
     {
-      name: 'Items',
-      tagline: 'The items of Port Dawn',
-      path: '/items',
+      name: 'History',
+      tagline: 'The history of Port Dawn',
+      path: '/history',
     },
   ];
 
