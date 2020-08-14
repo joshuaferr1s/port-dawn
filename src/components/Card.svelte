@@ -1,5 +1,7 @@
 <script>
   import { goto } from "@sveltech/routify";
+
+  export let dbName;
   export let id = null;
   export let title;
   export let tagline;
@@ -7,7 +9,7 @@
 
   function navigateToDetails() {
     if (!id) return;
-    $goto(`/party/${id}`);
+    $goto(`/${dbName}/${id}`);
   }
 </script>
 

@@ -22,11 +22,11 @@
   * [x] Clearable
 * [x] Lock save, edit, delete buttons whilst processing action
 * [x] Notification d20
-* [] People
-  * [] Can see all people
-  * [] Can see a single person
-  * [] Can edit a person
-  * [] Can delete a person if an admin
+* [x] People
+  * [x] Can see all people
+  * [x] Can see a single person
+  * [x] Can edit a person
+  * [x] Can delete a person if an admin
 * [] Sessions
   * [] Can see all sessions
   * [] Can see a single session

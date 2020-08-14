@@ -8,6 +8,7 @@
   import Markdown from '../Markdown.svelte';
 
   export let dbName;
+  export let entityList;
   export let pageTitle;
 
   let name = '',
@@ -30,7 +31,7 @@
       content,
     });
     if (createdEntity.success) {
-      party.update((p) => [ ...p, createdEntity.data]);
+      entityList.update((p) => [ ...p, createdEntity.data]);
       notifications.success(`Successfully created ${name}`);
       $goto(`/${dbName}/${createdEntity.data.id}`);
     } else {
@@ -44,7 +45,7 @@
 </script>
 
 <div class="mt-10 w-11/12 mx-auto pb-5">
-  <ActionBar backTo="/party" backText="party members">
+  <ActionBar backTo={`/${dbName}`} backText={pageTitle}>
     <Button on:click={_createEntity} disabled={$processing} color="green">
       Create
     </Button>

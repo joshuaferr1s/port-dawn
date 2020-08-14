@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { metatags, goto } from '@sveltech/routify';
   import marked from 'marked';
-  import { dataLoading, notifications, processing } from '../../store';
+  import { notifications, processing } from '../../store';
   import { updateEntity } from '../../api';
   import ActionBar from '../wrappers/ActionBar.svelte';
   import Button from '../Button.svelte';

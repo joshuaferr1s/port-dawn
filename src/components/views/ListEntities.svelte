@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { metatags, goto } from '@sveltech/routify';
-  import { dataLoading, notifications, processing } from '../../store';
+  import { notifications, processing } from '../../store';
   import { getAll } from '../../api';
 
   import ActionBar from '../wrappers/ActionBar.svelte';
@@ -30,8 +30,8 @@
 
 <div class="w-11/12 mx-auto mt-10">
   <ActionBar backTo="/" backText="the inn">
-    <Button on:click={() => $goto(`/${dbName}/create`)} color="green">Create</Button>
-    <Button on:click={getData} color="indigo">Short Rest</Button>
+    <Button on:click={() => $goto(`/${dbName}/create`)} color="green" disabled={$processing}>Create</Button>
+    <Button on:click={getData} color="indigo" disabled={$processing}>Short Rest</Button>
   </ActionBar>
 
   <h1 class="w-full my-10 text-center text-3xl text-orange-500">{pageTitle}</h1>
@@ -39,7 +39,7 @@
   {#if $entityList.length > 0}
     <div class="flex flex-wrap">
       {#each $entityList as entity}
-        <Card id={entity.id} title={entity.data.name} tagline={entity.data.tagline} image={entity.data.image} />
+        <Card {dbName} id={entity.id} title={entity.data.name} tagline={entity.data.tagline} image={entity.data.image} />
       {/each}
     </div>
   {:else}

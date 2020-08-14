@@ -8,6 +8,11 @@
       tagline: 'The ragged rangers',
       path: '/party',
     },
+    {
+      name: 'People',
+      tagline: 'The people of Port Dawn',
+      path: '/people',
+    },
   ];
 
   metatags.title = 'Port Dawn';
