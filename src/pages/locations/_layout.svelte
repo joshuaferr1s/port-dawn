@@ -1,16 +1,16 @@
 <script>
-  import { sessions, notifications } from '../../store';
+  import { locations, notifications } from '../../store';
   import { getAll } from '../../api';
   import Spinner from '../../components/Spinner.svelte';
 
   let promise = fetchMembers();
 
   async function fetchMembers() {
-    if ($sessions.length === 0) {
-      const sessionsList = await getAll('sessions');
-      if (sessionsList.success) sessions.set(sessionsList.data);
+    if ($locations.length === 0) {
+      const locationsList = await getAll('locations');
+      if (locationsList.success) locations.set(locationsList.data);
       else {
-        notifications.error('Error fetching sessions. Try again soon.');
+        notifications.error('Error fetching locations. Try again soon.');
         throw new Error();
       }
     }
@@ -26,7 +26,7 @@
     <slot />
   {:catch}
     <div class="text-center mx-auto w-full sm:w-1/2">
-      <h2 class="text-xl leading-7 text-gray-700">There was a problem loading the campaign sessions. Try again soon.</h2>
+      <h2 class="text-xl leading-7 text-gray-700">There was a problem loading the locations. Try again soon.</h2>
       <a class="text-lg text-gray-500 hover:text-orange-400" href="/">Return to Krusty's Inn</a>
     </div>
   {/await}

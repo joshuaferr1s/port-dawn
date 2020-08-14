@@ -5,6 +5,7 @@ export const user = writable(null);
 export const party = writable([]);
 export const people = writable([]);
 export const sessions = writable([]);
+export const locations = writable([]);
 
 export const processing = writable(false);
 
