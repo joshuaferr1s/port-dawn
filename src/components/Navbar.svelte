@@ -9,8 +9,11 @@
     $goto('/');
   }
   netlifyIdentity.on('login', newUser => {
-    console.log(newUser);
-    user.set(newUser);
+    if (!newUser.token) {
+      user.set(null);
+    } else {
+      user.set(newUser);
+    }
     netlifyIdentity.close();
   });
   netlifyIdentity.on('logout', logout);
