@@ -13,6 +13,11 @@
       tagline: 'The people of Port Dawn',
       path: '/people',
     },
+    {
+      name: 'Sessions',
+      tagline: 'The campaign session notes',
+      path: '/sessions',
+    },
   ];
 
   metatags.title = 'Port Dawn';

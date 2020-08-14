@@ -27,11 +27,11 @@
   * [x] Can see a single person
   * [x] Can edit a person
   * [x] Can delete a person if an admin
-* [] Sessions
-  * [] Can see all sessions
-  * [] Can see a single session
-  * [] Can edit a session
-  * [] Can delete a session if an admin
+* [x] Sessions
+  * [x] Can see all sessions
+  * [x] Can see a single session
+  * [x] Can edit a session
+  * [x] Can delete a session if an admin
 * [] Locations
   * [] Can see all locations
   * [] Can see a single location

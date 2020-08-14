@@ -1,7 +1,7 @@
 <script>
   import { goto } from "@sveltech/routify";
 
-  export let dbName;
+  export let dbName = null;
   export let id = null;
   export let title;
   export let tagline;
