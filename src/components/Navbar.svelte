@@ -2,6 +2,7 @@
   import { goto } from '@sveltech/routify';
   import netlifyIdentity from 'netlify-identity-widget';
   import { user } from '../store';
+  import Logo from './Logo.svelte';
   import AuthButton from './AuthButton.svelte';
   
   function logout() {
@@ -21,8 +22,10 @@
 </script>
 
 <header class="flex justify-between items-center px-4 py-2 border-b-2 border-gray-100">
-  <div class="text-xl">
-    <a href="/">Port<span class="text-orange-400">Dawn</span></a>
+  <div>
+    <a href="/">
+      <Logo classes="h-20 w-20" />
+    </a>
   </div>
   <div class="">
     {#if $user}
